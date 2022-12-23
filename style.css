@@ -1,0 +1,19 @@
+body {
+
+}
+
+#grid-container > div > div {
+    border-left: 1px dashed black;
+    border-bottom: 1px dashed black;
+}
+
+#grid-container {
+    border: 1px solid black;
+
+    width: 500px;
+    height: 500px;
+}
+
+.coloured {
+    background-color: grey;
+}
