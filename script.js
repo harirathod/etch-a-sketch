@@ -13,9 +13,7 @@ function createGrid(n)
         }
         container.appendChild(rowDiv);
     }
-    getGridBoxes().forEach(div => div.addEventListener('mouseover', function(e) {
-        e.target.classList.add('coloured');
-    }));
+    setAllGrey();
 }
 
 function reset()
@@ -24,8 +22,13 @@ function reset()
     rows.forEach(row => row.remove());
 }
 
-let resetBtn = document.querySelector('#change-grid');
-resetBtn.addEventListener('click', function(e) {
+let clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', function(e) {
+    getGridBoxes().forEach(div => div.style.backgroundColor = 'transparent');
+});
+
+let changeGridBtn = document.querySelector('#new-grid');
+changeGridBtn.addEventListener('click', function(e) {
     let squaresPerSide = 32;
     squaresPerSide = prompt('Enter a valid number for the squares per side of the new grid.', "32");
     while(squaresPerSide > 100 || squaresPerSide < 5) {
@@ -37,8 +40,32 @@ resetBtn.addEventListener('click', function(e) {
 
 let multicolouredBtn = document.querySelector('#multicoloured');
 multicolouredBtn.addEventListener('click', function(e) {
-    getGridBoxes().forEach(div => div.classList.add('multicoloured'));
+    setAllMulticoloured();
 })
+let normalBtn = document.querySelector('#normal');
+normalBtn.addEventListener('click', function(e) {
+    setAllGrey();
+})
+
+function setAllGrey()
+{
+    getGridBoxes().forEach(div => div.addEventListener('mouseover', function(e) {
+        e.target.style.backgroundColor = 'grey';
+    }));
+}
+
+function setAllMulticoloured()
+{
+    getGridBoxes().forEach(div => div.addEventListener('mouseover', function(e) {
+        e.target.style.backgroundColor = randomColour();
+    }));
+}
+
+function randomColour()
+{
+    let colours = ['lightgreen', 'lightseagreen', 'lightcoral', 'lightsalmon'];
+    return colours[Math.floor(Math.random() * colours.length)];
+}
 
 function getGridBoxes()
 {

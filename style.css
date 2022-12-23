@@ -1,3 +1,13 @@
+body {
+    padding: 16px;
+    background-color: lightyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+
 #grid-container > div > div {
     border-left: 1px dashed black;
     border-bottom: 1px dashed black;
@@ -5,11 +15,20 @@
 
 #grid-container {
     border: 1px solid black;
-
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 }
 
-.coloured {
-    background-color: grey;
+#button-container {
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 6px;
+    background-color: transparent;
+    border: 2px groove goldenrod;
+    border-radius: 8px;
 }
