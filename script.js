@@ -13,7 +13,7 @@ function createGrid(n)
         }
         container.appendChild(rowDiv);
     }
-    setAllGrey();
+    setAllNormal();
 }
 
 function reset()
@@ -44,13 +44,19 @@ multicolouredBtn.addEventListener('click', function(e) {
 })
 let normalBtn = document.querySelector('#normal');
 normalBtn.addEventListener('click', function(e) {
-    setAllGrey();
+    setAllNormal();
 })
 
-function setAllGrey()
+function setAllNormal()
 {
     getGridBoxes().forEach(div => div.addEventListener('mouseover', function(e) {
-        e.target.style.backgroundColor = 'grey';
+        const root = document.documentElement;
+        if(root.className === 'light') {
+            e.target.style.backgroundColor = 'grey';
+        }
+        else {
+            e.target.style.backgroundColor = '#f8f8c5'
+        }
     }));
 }
 
@@ -73,3 +79,38 @@ function getGridBoxes()
     return divs;
 }
 
+
+////////////
+
+const root = document.documentElement;
+root.className = 'light';
+let colorModeBtn = document.querySelector('#color-mode');
+
+colorModeBtn.addEventListener('click', function(e) {
+    setNewTheme();
+});
+
+function setNewTheme() {
+    const root = document.documentElement;
+    if(root.className === 'dark') {
+        root.className = 'light';
+    }
+    else if (root.className === 'light') {
+        root.className = 'dark';
+    }
+    changeColorSwitchBtnIcon();
+}
+
+function changeColorSwitchBtnIcon() {
+    const sunnyIcon = document.querySelector('#light-mode');
+    const moonIcon = document.querySelector('#dark-mode');
+    if(root.className === 'dark') {
+        moonIcon.style.display = 'block'
+        sunnyIcon.style.display = 'none';
+    }
+    else if (root.className ==='light') {
+        sunnyIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+    }
+}
+changeColorSwitchBtnIcon();
