@@ -1,5 +1,6 @@
 let container = document.querySelector('#grid-container');
-createGrid(32);
+const initialSize = 24;
+createGrid(initialSize);
 function createGrid(n) 
 {
     let width = container.clientWidth / n;
@@ -29,10 +30,10 @@ clearBtn.addEventListener('click', function(e) {
 
 let changeGridBtn = document.querySelector('#new-grid');
 changeGridBtn.addEventListener('click', function(e) {
-    let squaresPerSide = 32;
-    squaresPerSide = prompt('Enter a valid number for the squares per side of the new grid.', "32");
+    let squaresPerSide = initialSize;
+    squaresPerSide = prompt('Enter a valid number for the squares per side of the new grid.', `${initialSize}`);
     while(squaresPerSide > 100 || squaresPerSide < 5) {
-        squaresPerSide = prompt('Your number was not in the valid range (5 - 100). Please enter a valid number.', "32");
+        squaresPerSide = prompt('Your number was not in the valid range (5 - 100). Please enter a valid number.', `${initialSize}`);
     }
     reset();
     createGrid(squaresPerSide);
