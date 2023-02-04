@@ -17,4 +17,4 @@ The webpage displays a game of 'Etch A Sketch', and provides several options for
 - Hover functionality is required for a more user-friendly experience.
 
 # Project Status
-- The project is under development.
+- The project is **completed**.
